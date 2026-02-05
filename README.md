@@ -1,4 +1,4 @@
-# 🚀 FastAPI Tasks API -- Production Style Backend
+# 🚀 FastAPI Tasks API --- Production Style Backend
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-Modern-green)
@@ -6,24 +6,25 @@
 ![Docker](https://img.shields.io/badge/Docker-Containerized-blue)
 ![Pytest](https://img.shields.io/badge/Tests-Pytest-yellow)
 
-------------------------------------------------------------------------
-
 API REST para la gestión de tareas desarrollada con **FastAPI**,
-**PostgreSQL**, **SQLAlchemy**, **Docker** y **pytest**.\
-Proyecto diseñado siguiendo buenas prácticas profesionales y
-arquitectura moderna orientada a backend.
+**PostgreSQL**, **SQLAlchemy**, **Docker** y **pytest**.
+
+Proyecto diseñado siguiendo buenas prácticas profesionales de desarrollo
+backend, con enfoque en reproducibilidad, testing automatizado y
+arquitectura desacoplada.
 
 ------------------------------------------------------------------------
 
 ## 📌 Características
 
 ✔ API REST completa (CRUD de tareas)\
-✔ Arquitectura desacoplada (schemas, models, database, routers)\
+✔ Arquitectura desacoplada (schemas, models, database)\
 ✔ PostgreSQL como base de datos relacional\
 ✔ Docker Compose con múltiples servicios\
 ✔ Tests automatizados con pytest\
+✔ Configuración reproducible con `pytest.ini`\
 ✔ Healthchecks entre servicios\
-✔ Configuración mediante variables de entorno\
+✔ Variables de entorno para configuración flexible\
 ✔ Documentación automática con Swagger y ReDoc
 
 ------------------------------------------------------------------------
@@ -48,6 +49,7 @@ arquitectura moderna orientada a backend.
     docker-fastapi-postgres/
     │
     ├── app/
+    │   ├── __init__.py
     │   ├── main.py
     │   ├── database.py
     │   ├── models.py
@@ -58,7 +60,13 @@ arquitectura moderna orientada a backend.
     │   ├── conftest.py
     │   └── test_tasks.py
     │
+    ├── db/
+    │   └── init/
+    │       └── 01_create_test_db.sql
+    │
     ├── docker-compose.yml
+    ├── Dockerfile
+    ├── pytest.ini
     ├── .env.example
     ├── .env.test
     └── README.md
@@ -77,7 +85,17 @@ arquitectura moderna orientada a backend.
 
 ### 1️⃣ Copiar variables de entorno
 
-    cp .env.example .env
+Linux / Mac:
+
+``` bash
+cp .env.example .env
+```
+
+Windows (PowerShell):
+
+``` powershell
+copy .env.example .env
+```
 
 Editar `.env` si es necesario.
 
@@ -87,7 +105,25 @@ Editar `.env` si es necesario.
 
 ### Levantar servicios
 
-    docker compose up -d --build
+``` bash
+docker compose up -d --build
+```
+
+------------------------------------------------------------------------
+
+### Ver logs de la API
+
+``` bash
+docker compose logs -f fastapi_api
+```
+
+------------------------------------------------------------------------
+
+### Detener servicios
+
+``` bash
+docker compose down
+```
 
 ------------------------------------------------------------------------
 
@@ -97,7 +133,7 @@ Editar `.env` si es necesario.
 
 👉 http://localhost:8000
 
-### Swagger
+### Swagger UI
 
 👉 http://localhost:8000/docs
 
@@ -115,13 +151,17 @@ Editar `.env` si es necesario.
 
 Ejecutar:
 
-    python -m pytest -q
+``` bash
+python -m pytest -q
+```
 
-Los tests:
+### ✔ Características de testing
 
--   Usan una base de datos aislada
--   Crean tablas automáticamente
--   Limpian datos tras cada ejecución
+-   Base de datos aislada para tests
+-   Creación automática de tablas
+-   Limpieza tras cada test
+-   Configuración estable mediante `pytest.ini`
+-   Dependency overrides de FastAPI
 
 ------------------------------------------------------------------------
 
@@ -137,6 +177,21 @@ Los tests:
 
 ------------------------------------------------------------------------
 
+## 🧪 Ejemplo de request
+
+### Crear tarea
+
+``` json
+POST /tasks
+
+{
+  "title": "Aprender Docker",
+  "completed": false
+}
+```
+
+------------------------------------------------------------------------
+
 ## 🛠 Tecnologías utilizadas
 
 -   FastAPI
@@ -148,26 +203,27 @@ Los tests:
 
 ------------------------------------------------------------------------
 
-## 🧪 Ejemplo de request
-
-### Crear tarea
-
-    POST /tasks
-    {
-      "title": "Aprender Docker",
-      "completed": false
-    }
-
-------------------------------------------------------------------------
-
-## 📈 Posibles mejoras
+## 📈 Posibles mejoras futuras
 
 -   Autenticación JWT
 -   Migraciones con Alembic
--   CI/CD
+-   Integración CI/CD
 -   Logging estructurado
--   Cobertura de tests
--   Separación por capas (Clean Architecture)
+-   Métricas y observabilidad
+-   Clean Architecture / Service Layer
+-   Cobertura de tests (coverage)
+
+------------------------------------------------------------------------
+
+## 🎯 Objetivo del proyecto
+
+Proyecto desarrollado como práctica profesional backend para demostrar:
+
+-   Diseño de APIs REST modernas
+-   Testing automatizado
+-   Containerización con Docker
+-   Buenas prácticas de organización de código
+-   Configuración reproducible
 
 ------------------------------------------------------------------------
 
@@ -175,10 +231,9 @@ Los tests:
 
 Marcial Godes
 
-Proyecto educativo orientado a portfolio profesional backend.
+LinkedIn:\
+👉 https://www.linkedin.com/in/marcial-godes-alameda-91093b194/
 
 ------------------------------------------------------------------------
 
-## ⭐ Licencia
-
-Uso educativo y demostrativo.
+⭐ Proyecto educativo orientado a portfolio profesional backend
