@@ -17,15 +17,15 @@ arquitectura desacoplada.
 
 ## 📌 Características
 
-✔ API REST completa (CRUD de tareas)\
-✔ Arquitectura desacoplada (schemas, models, database)\
-✔ PostgreSQL como base de datos relacional\
-✔ Docker Compose con múltiples servicios\
-✔ Tests automatizados con pytest\
-✔ Configuración reproducible con `pytest.ini`\
-✔ Healthchecks entre servicios\
-✔ Variables de entorno para configuración flexible\
-✔ Documentación automática con Swagger y ReDoc
+✔ API REST completa (CRUD de tareas)  
+✔ Arquitectura desacoplada (schemas, models, database)  
+✔ PostgreSQL como base de datos relacional  
+✔ Docker Compose con múltiples servicios  
+✔ Tests automatizados con pytest  
+✔ Configuración reproducible con `pytest.ini`  
+✔ Healthchecks entre servicios  
+✔ Variables de entorno para configuración flexible  
+✔ Documentación automática con Swagger y ReDoc  
 
 ------------------------------------------------------------------------
 
@@ -75,9 +75,9 @@ arquitectura desacoplada.
 
 ## ⚙️ Requisitos
 
--   Docker
--   Docker Compose
--   Python 3.12 (opcional para ejecución local)
+- Docker
+- Docker Compose
+- Python 3.12 (opcional para ejecución local)
 
 ------------------------------------------------------------------------
 
@@ -87,15 +87,17 @@ arquitectura desacoplada.
 
 Linux / Mac:
 
-``` bash
+```bash
 cp .env.example .env
 ```
 
 Windows (PowerShell):
 
-``` powershell
+```powershell
 copy .env.example .env
 ```
+
+📌 **Nota:** Para PgAdmin se incluyen credenciales por defecto en `.env.example`.
 
 Editar `.env` si es necesario.
 
@@ -105,7 +107,7 @@ Editar `.env` si es necesario.
 
 ### Levantar servicios
 
-``` bash
+```bash
 docker compose up -d --build
 ```
 
@@ -113,7 +115,7 @@ docker compose up -d --build
 
 ### Ver logs de la API
 
-``` bash
+```bash
 docker compose logs -f fastapi_api
 ```
 
@@ -121,7 +123,7 @@ docker compose logs -f fastapi_api
 
 ### Detener servicios
 
-``` bash
+```bash
 docker compose down
 ```
 
@@ -130,19 +132,15 @@ docker compose down
 ## 🌐 Acceso a la aplicación
 
 ### API
-
 👉 http://localhost:8000
 
 ### Swagger UI
-
 👉 http://localhost:8000/docs
 
 ### ReDoc
-
 👉 http://localhost:8000/redoc
 
 ### PgAdmin
-
 👉 http://localhost:5050
 
 ------------------------------------------------------------------------
@@ -151,89 +149,15 @@ docker compose down
 
 Ejecutar:
 
-``` bash
+```bash
 python -m pytest -q
 ```
-
-### ✔ Características de testing
-
--   Base de datos aislada para tests
--   Creación automática de tablas
--   Limpieza tras cada test
--   Configuración estable mediante `pytest.ini`
--   Dependency overrides de FastAPI
-
-------------------------------------------------------------------------
-
-## 📡 Endpoints principales
-
-  Método   Endpoint      Descripción
-  -------- ------------- ------------------
-  GET      /tasks        Obtener tareas
-  POST     /tasks        Crear tarea
-  GET      /tasks/{id}   Obtener tarea
-  PUT      /tasks/{id}   Actualizar tarea
-  DELETE   /tasks/{id}   Eliminar tarea
-
-------------------------------------------------------------------------
-
-## 🧪 Ejemplo de request
-
-### Crear tarea
-
-``` json
-POST /tasks
-
-{
-  "title": "Aprender Docker",
-  "completed": false
-}
-```
-
-------------------------------------------------------------------------
-
-## 🛠 Tecnologías utilizadas
-
--   FastAPI
--   SQLAlchemy
--   PostgreSQL
--   Docker
--   Pytest
--   Pydantic
-
-------------------------------------------------------------------------
-
-## 📈 Posibles mejoras futuras
-
--   Autenticación JWT
--   Migraciones con Alembic
--   Integración CI/CD
--   Logging estructurado
--   Métricas y observabilidad
--   Clean Architecture / Service Layer
--   Cobertura de tests (coverage)
-
-------------------------------------------------------------------------
-
-## 🎯 Objetivo del proyecto
-
-Proyecto desarrollado como práctica profesional backend para demostrar:
-
--   Diseño de APIs REST modernas
--   Testing automatizado
--   Containerización con Docker
--   Buenas prácticas de organización de código
--   Configuración reproducible
 
 ------------------------------------------------------------------------
 
 ## 👨‍💻 Autor
 
-Marcial Godes
-
-LinkedIn:\
-👉 https://www.linkedin.com/in/marcial-godes-alameda-91093b194/
-
-------------------------------------------------------------------------
+Marcial Godes  
+LinkedIn: https://www.linkedin.com/in/marcial-godes-alameda-91093b194/
 
 ⭐ Proyecto educativo orientado a portfolio profesional backend
